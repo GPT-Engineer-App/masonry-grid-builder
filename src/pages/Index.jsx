@@ -25,9 +25,9 @@ const Index = () => {
             <Box position="relative">
               <Image src={image.src} alt={image.title} />
               <Flex position="absolute" bottom="2" right="2" align="center">
-                <IconButton aria-label="Download image" icon={<FaDownload />} size="sm" mr="2" />
-                <IconButton aria-label="Share image" icon={<FaShareAlt />} size="sm" mr="2" />
-                <IconButton aria-label="Like image" icon={<FaHeart />} size="sm" />
+                <IconButton aria-label="Download image" icon={<FaDownload />} size="sm" mr="2" onClick={() => alert("Downloading image...")} />
+                <IconButton aria-label="Share image" icon={<FaShareAlt />} size="sm" mr="2" onClick={() => alert("Sharing image...")} />
+                <IconButton aria-label="Like image" icon={<FaHeart />} size="sm" onClick={() => alert("Liking image...")} />
               </Flex>
               <Text p={2} fontSize="lg" position="absolute" bottom="0" left="2" bg="rgba(255, 255, 255, 0.8)" visibility="hidden" _groupHover={{ visibility: "visible" }}>
                 {image.title}
