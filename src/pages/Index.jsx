@@ -1,6 +1,7 @@
 // Complete the Index page component here
 // Use chakra-ui for styling and layout
-import { Box, SimpleGrid, Image, Text } from "@chakra-ui/react";
+import { Box, SimpleGrid, Image, Text, IconButton, Flex } from "@chakra-ui/react";
+import { FaDownload, FaShareAlt, FaHeart } from "react-icons/fa";
 
 const Index = () => {
   // Sample images for the gallery
@@ -21,10 +22,17 @@ const Index = () => {
       <SimpleGrid columns={[1, 2, 3]} spacing={10}>
         {images.map((image, index) => (
           <Box key={index} boxShadow="md" rounded="lg" overflow="hidden">
-            <Image src={image.src} alt={image.title} />
-            <Text p={2} fontSize="lg">
-              {image.title}
-            </Text>
+            <Box position="relative">
+              <Image src={image.src} alt={image.title} />
+              <Flex position="absolute" bottom="2" right="2" align="center">
+                <IconButton aria-label="Download image" icon={<FaDownload />} size="sm" mr="2" />
+                <IconButton aria-label="Share image" icon={<FaShareAlt />} size="sm" mr="2" />
+                <IconButton aria-label="Like image" icon={<FaHeart />} size="sm" />
+              </Flex>
+              <Text p={2} fontSize="lg" position="absolute" bottom="0" left="2" bg="rgba(255, 255, 255, 0.8)">
+                {image.title}
+              </Text>
+            </Box>
           </Box>
         ))}
       </SimpleGrid>
