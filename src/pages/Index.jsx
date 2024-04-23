@@ -17,8 +17,9 @@ const Index = () => {
     document.body.removeChild(link);
   };
 
-  const handleShare = () => {
-    alert("Share functionality is not implemented. This would normally integrate with social media platforms.");
+  const handleShare = (image) => {
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(image.src)}&text=${encodeURIComponent(image.title)}`;
+    window.open(twitterUrl, "_blank");
   };
 
   const handleLike = (index) => {
