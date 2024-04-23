@@ -19,7 +19,7 @@ const Index = () => {
       <Text fontSize="2xl" mb={4}>
         Image Gallery
       </Text>
-      <SimpleGrid columns={[1, 2, 3]} spacing={10}>
+      <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={10}>
         {images.map((image, index) => (
           <Box key={index} boxShadow="md" rounded="lg" overflow="hidden">
             <Box position="relative">
