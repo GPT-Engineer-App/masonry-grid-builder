@@ -3,8 +3,30 @@
 import { Box, SimpleGrid, Image, Text, IconButton, Flex } from "@chakra-ui/react";
 import { FaDownload, FaShareAlt, FaHeart } from "react-icons/fa";
 
+import { useState } from "react";
+
 const Index = () => {
-  // Sample images for the gallery
+  const [likes, setLikes] = useState(Array(6).fill(0));
+
+  const handleDownload = (url) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = url.substring(url.lastIndexOf("/") + 1);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleShare = () => {
+    alert("Share functionality is not implemented. This would normally integrate with social media platforms.");
+  };
+
+  const handleLike = (index) => {
+    const newLikes = [...likes];
+    newLikes[index]++;
+    setLikes(newLikes);
+  };
+
   const images = [
     { src: "https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxuYXR1cmUlMjBsYW5kc2NhcGV8ZW58MHx8fHwxNzEzODY5MDQ2fDA&ixlib=rb-4.0.3&q=80&w=1080", title: "Nature Landscape" },
     { src: "https://images.unsplash.com/photo-1529619768328-e37af76c6fe5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxjaXR5JTIwbmlnaHR8ZW58MHx8fHwxNzEzODY5MDQ3fDA&ixlib=rb-4.0.3&q=80&w=1080", title: "City Night" },
@@ -25,9 +47,10 @@ const Index = () => {
             <Box position="relative">
               <Image src={image.src} alt={image.title} />
               <Flex position="absolute" bottom="2" right="2" align="center">
-                <IconButton aria-label="Download image" icon={<FaDownload />} size="sm" mr="2" />
-                <IconButton aria-label="Share image" icon={<FaShareAlt />} size="sm" mr="2" />
-                <IconButton aria-label="Like image" icon={<FaHeart />} size="sm" />
+                <IconButton aria-label="Download image" icon={<FaDownload />} size="sm" mr="2" onClick={() => handleDownload(image.src)} />
+                <IconButton aria-label="Share image" icon={<FaShareAlt />} size="sm" mr="2" onClick={handleShare} />
+                <IconButton aria-label="Like image" icon={<FaHeart />} size="sm" onClick={() => handleLike(index)} />
+                <Text fontSize="sm">{likes[index]}</Text>
               </Flex>
               <Text p={2} fontSize="lg" position="absolute" bottom="0" left="2" bg="rgba(255, 255, 255, 0.8)" visibility="hidden" _groupHover={{ visibility: "visible" }}>
                 {image.title}
