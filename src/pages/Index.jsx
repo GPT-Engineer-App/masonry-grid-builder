@@ -29,7 +29,7 @@ const Index = () => {
                 <IconButton aria-label="Share image" icon={<FaShareAlt />} size="sm" mr="2" />
                 <IconButton aria-label="Like image" icon={<FaHeart />} size="sm" />
               </Flex>
-              <Text p={2} fontSize="lg" position="absolute" bottom="0" left="2" bg="rgba(255, 255, 255, 0.8)">
+              <Text p={2} fontSize="lg" position="absolute" bottom="0" left="2" bg="rgba(255, 255, 255, 0.8)" visibility="hidden" _groupHover={{ visibility: "visible" }}>
                 {image.title}
               </Text>
             </Box>
