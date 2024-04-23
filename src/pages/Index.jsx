@@ -49,8 +49,12 @@ const Index = () => {
               <Flex position="absolute" bottom="2" right="2" align="center">
                 <IconButton aria-label="Download image" icon={<FaDownload />} size="sm" mr="2" onClick={() => handleDownload(image.src)} />
                 <IconButton aria-label="Share image" icon={<FaShareAlt />} size="sm" mr="2" onClick={handleShare} />
-                <IconButton aria-label="Like image" icon={<FaHeart />} size="sm" onClick={() => handleLike(index)} />
-                <Text fontSize="sm">{likes[index]}</Text>
+                <Box position="relative">
+                  <IconButton aria-label="Like image" icon={<FaHeart />} size="sm" onClick={() => handleLike(index)} />
+                  <Text position="absolute" top="-1" right="-1" px="2" py="1" fontSize="xs" color="white" bg="red.500" borderRadius="full">
+                    {likes[index]}
+                  </Text>
+                </Box>
               </Flex>
               <Text p={2} fontSize="lg" position="absolute" bottom="0" left="2" bg="rgba(255, 255, 255, 0.8)" visibility="hidden" _groupHover={{ visibility: "visible" }}>
                 {image.title}
